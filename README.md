@@ -39,6 +39,14 @@ The idea would be to create a DApp where packages are represented in the form of
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install the project
+
+### `npx hardat test`
+
+Launches the test runner with hardhat for the contract.
+
 ### `npm start`
 
 Runs the app in the development mode.\
