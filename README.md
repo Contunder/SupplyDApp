@@ -1,6 +1,39 @@
-# Getting Started with Create React App
+# Supply Chain DApp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Context
+
+The idea would be to create a DApp where packages are represented in the form of tokens, allowing their delivery to be tracked and certain business rules to be automated using smart contracts.
+
+## 1. Tokenization of resources
+- Each package is a SFT (Semi-Fungible Token) representing a unique delivery.
+- Token attributes:
+  - trackingID: unique identifier of the package
+  - sender and recipient: blockchain addresses
+  - status: "Pending", "In transit", "Delivered"
+  - IPFS hash: Metadata containing related documents (invoice, proof of deposit, etc.)
+  - timestamp of creation and last update
+
+## 2. Token exchanges
+   - A package can change status at each stage of the process (collection, transit, delivery).
+   - Each delivery person can be a node in the network validating transactions (decentralized delivery).
+   - Possibility of exchanging packages between carriers via smart contracts, validating the legitimacy of the transfer.
+
+## 3. Possession limits
+   - A delivery person can only transport a limited number of packages (example: 5 max at a time).
+   - A customer cannot order beyond a certain daily capacity.
+
+## 4. Time constraints
+   - A minimum delay is imposed before a delivery person can accept a new package after a delivery.
+   - A package cannot be transferred before a certain time after its deposit.
+
+## 5. IPFS for storage
+   - Storage of proof of delivery, labels, digital signatures on IPFS.
+
+## 6. Unit tests with Hardhat or Anchor
+   - Tests on transfer validation, status management and integrity of data stored on IPFS.
+   Potential use cases
+   - A peer-to-peer delivery service where independent delivery people take charge of packages in exchange for crypto payments.
+   - A decentralized logistics network where each actor (carriers, hubs, customers) is a validator node.
 
 ## Available Scripts
 
