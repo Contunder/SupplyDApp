@@ -35,6 +35,13 @@ The idea would be to create a DApp where packages are represented in the form of
    - A peer-to-peer delivery service where independent delivery people take charge of packages in exchange for crypto payments.
    - A decentralized logistics network where each actor (carriers, hubs, customers) is a validator node.
 
+## File location 
+
+  - contracts/DecentralizedDeliveryToken.sol -> Smart Contracts
+  - scripts/deploy -> Script for deploying contract on hardat
+  - src/App/DeliveryDApp -> React Front
+  - src/App/DecentralizedDeliveryToken.json -> contractABI
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -46,6 +53,12 @@ To install the project
 ### `npx hardat test`
 
 Launches the test runner with hardhat for the contract.
+
+### `npx hardhat node`
+Run Hardat Server
+
+### `npx hardhat run scripts/deploy.js --network hardhat --show-stack-traces`
+Deploy on HardHat Server
 
 ### `npm start`
 

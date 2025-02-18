@@ -20,8 +20,8 @@ export default function DeliveryDApp() {
     const [approveAmount, setApproveAmount] = useState("");
 
     useEffect(() => {
-        const intervalId = setInterval(fetchEvents, 5000);  // Poll every 5 seconds
-        return () => clearInterval(intervalId);  // Cleanup on component unmount
+        const intervalId = setInterval(fetchEvents, 5000);
+        return () => clearInterval(intervalId);
     }, []);
 
     async function fetchEvents() {
@@ -38,11 +38,9 @@ export default function DeliveryDApp() {
 
     // Connect to the local Hardhat network
     async function connectWallet() {
-        // Hardhat network does not need `eth_requestAccounts`
         const localProvider = new ethers.JsonRpcProvider("http://localhost:8545");
 
-        // Use one of the Hardhat accounts, e.g., the first account
-        const signer = localProvider.getSigner(0);  // Get the first Hardhat account
+        const signer = localProvider.getSigner(0);
         setProvider(localProvider);
         setSigner(signer);
 
@@ -53,13 +51,11 @@ export default function DeliveryDApp() {
         console.log("✅ Wallet connected and contract loaded.");
     }
 
-    // Handle event logic (now manually handled by polling)
     function handleEvent(eventName, eventData) {
         setEvents(prevEvents => [{ eventName, eventData }, ...prevEvents]);
         console.log(`📡 Event received: ${eventName}`, eventData);
     }
 
-    // Create a new package
     async function createPackage() {
         if (!contract) return;
         const tx = await contract.createPackage(recipient, amount, deliveryFile);
@@ -67,7 +63,6 @@ export default function DeliveryDApp() {
         console.log("📦 Package created successfully!");
     }
 
-    // Approve transfer
     async function approveTransfer() {
         if (!contract) return;
         const tx = await contract.approve(spender, approveAmount);
@@ -75,7 +70,6 @@ export default function DeliveryDApp() {
         console.log("✅ Transfer approved!");
     }
 
-    // Transfer package to a new holder
     async function transferPackage() {
         if (!contract) return;
         const tx = await contract.transferFrom(signer.address, newHolder, packageId);
@@ -83,7 +77,6 @@ export default function DeliveryDApp() {
         console.log("📦🔄 Package transferred!");
     }
 
-    // Confirm delivery
     async function confirmDelivery() {
         if (!contract) return;
         const tx = await contract.confirmDelivery(packageId, proofOfDelivery);
